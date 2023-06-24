@@ -17,4 +17,4 @@ class User(Base):
     role = Column(Enum(RoleType), nullable=False, server_default=RoleType.complainer.name)
 
     def __str__(self):
-        return f"{User.firstname} {User.lastname}"
+        return f"{self.firstname} {self.lastname}"
