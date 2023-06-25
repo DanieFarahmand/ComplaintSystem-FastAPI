@@ -18,7 +18,7 @@ class AuthManager:
     def encode_token(user):
         try:
             payload = {
-                "sub": user("id"),
+                "sub": user.id,
                 "exp": datetime.utcnow() + timedelta(minutes=120)
             }
             return jwt.encode(payload, config("SECRET_KEY"), algorithm="HS256")
