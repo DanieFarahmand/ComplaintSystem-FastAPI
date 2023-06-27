@@ -2,12 +2,12 @@ import enum
 
 
 class RoleType(enum.Enum):
-    approver = "Approver"
-    complainer = "Complainer"
-    admin = "Admin"
+    approver = "approver"
+    complainer = "complainer"
+    admin = "admin"
 
 
 class ComplaintState(enum.Enum):
-    pending = "Pending"
-    approved = "Approved"
-    rejected = "Rejected"
+    pending = "pending"
+    approved = "approved"
+    rejected = "rejected"

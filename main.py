@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from database import database
 from resources.routers import api_router
 
-app = FastAPI()
+app = FastAPI(debug=True)
 app.include_router(api_router)
 
 
