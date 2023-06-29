@@ -1,4 +1,4 @@
-from sqlalchemy import select, insert
+from sqlalchemy import select, insert, delete
 
 from database import database
 from models.complaint import Complaints
@@ -21,3 +21,7 @@ class ComplaintManager:
         complaint_data["complainer_id"] = user.id
         id_ = await database.execute(insert(Complaints).values(complaint_data))
         return await database.fetch_one(select(Complaints).where(Complaints.id == id_))
+
+    @staticmethod
+    async def delete_complaint(complaint_id):
+        await database.execute(delete(Complaints).where(Complaints.id == complaint_id))
