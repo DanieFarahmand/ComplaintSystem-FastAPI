@@ -1,9 +1,10 @@
 from fastapi import HTTPException
 from passlib.context import CryptContext
-from sqlalchemy import insert, select
+from sqlalchemy import insert, select, update
 from asyncpg import UniqueViolationError
 
 from database import database
+from models import RoleType
 from models.user import User
 from manager.auth import AuthManager
 
@@ -37,3 +38,7 @@ class UserManager:
     @staticmethod
     async def get_user_by_email(email):
         return await database.fetch_all(select(User).where(User.email == email))
+
+    @staticmethod
+    async def change_role(role: RoleType, user_id):
+        await database.execute(update(User).where(User.id == user_id).values(role=role))
